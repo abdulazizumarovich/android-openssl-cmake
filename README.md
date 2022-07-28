@@ -10,6 +10,20 @@ Add these to your `CMakeLists.txt` app :
 
 ```
 set(OPENSSL_ROOT_DIR path-to-prefix-folder)
+set(OPENSSL_INCLUDE_DIR ${OPENSSL_ROOT_DIR}/include)
+set(OPENSSL_CRYPTO_LIBRARY ${OPENSSL_ROOT_DIR}/lib/libcrypto.a)
+
+set(OPENSSL_USE_STATIC_LIBS TRUE)
+find_package(OpenSSL REQUIRED)
+message("OpenSSL dir: ${OPENSSL_ROOT_DIR}")
+
+if(OPENSSL_FOUND)
+    message("OpenSSL ver: ${OPENSSL_VERSION}")
+else()
+    message("OpenSSL not found")
+endif()
+
+target_link_libraries(UnifiedLib OpenSSL::Crypto)
 ```
 
 If your CMake file is at `app/src/main/cpp/CMakeLists.txt` and the `prefix` folder is in app root then it will be :
