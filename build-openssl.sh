@@ -2,7 +2,7 @@
 set -u
 set -e
 
-export BUILD_ARCHS=${BUILD_ARCHS:-arm_32 arm_64}
+export BUILD_ARCHS=${BUILD_ARCHS:-arm_32 arm_64 x86_32 x86_64}
 export OPENSSL_BRANCH=OpenSSL_1_1_1-stable
 export OPENSSL_ANDROID_API=21
 
